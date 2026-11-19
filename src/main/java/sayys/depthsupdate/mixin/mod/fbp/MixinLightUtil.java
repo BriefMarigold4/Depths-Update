@@ -1,23 +1,26 @@
 package sayys.depthsupdate.mixin.mod.fbp;
 
-import com.fbp.compat.CeleritasDynamicLightsHandler;
+import net.minecraft.client.Minecraft;
+import net.minecraft.launchwrapper.Launch;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 
-import static com.fbp.FBP.IS_CELERITASDYNAMICLIGHTS_LOADED;
-import static com.fbp.FBP.MC;
-
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Pseudo;
+import org.spongepowered.asm.mixin.Unique;
+import sayys.depthsupdate.util.FBPDynamicLightHandler;
 import sayys.depthsupdate.core.HeightContext;
 import sayys.depthsupdate.core.HeightManager;
 
-import com.fbp.renderer.light.LightUtil;
-
-@Mixin(value = LightUtil.class, remap = false)
+@Pseudo
+@Mixin(targets = "com.fbp.renderer.light.LightUtil", remap = false)
 public class MixinLightUtil {
+
+    @Unique
+    private static final Minecraft depthsupdate$MC = Minecraft.getMinecraft();
 
     @Shadow
     private static World world;
@@ -49,7 +52,7 @@ public class MixinLightUtil {
      */
     @Overwrite
     public static int getCombinedLight(int x, int y, int z) {
-        World w = MC.player.world;
+        World w = depthsupdate$MC.player.world;
         HeightContext ctx = HeightManager.get(w);
 
         if (y < ctx.minY() || y >= ctx.maxY())
@@ -79,8 +82,8 @@ public class MixinLightUtil {
                 0);
         }
 
-        if (IS_CELERITASDYNAMICLIGHTS_LOADED) {
-            int dynamic = CeleritasDynamicLightsHandler.getDynamicLight(x, y, z);
+        if (Launch.classLoader.isClassExist("toni.sodiumdynamiclights.SodiumDynamicLights")) {
+            int dynamic = FBPDynamicLightHandler.getDynamicLight(x, y, z);
             result = pack(sky(result), Math.max(block(result), dynamic));
         }
 

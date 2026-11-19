@@ -22,7 +22,7 @@ scalar = "8800375"
 galacticraft-legacy = "6364107"
 asmodeuscore = "7180991"
 starmaker = "8497415"
-fanciest-block-particles = "8655640"
+rtg = "9354370"
 
 [libraries]
 jspecify = { module = "org.jspecify:jspecify", version.ref = "jspecify" }
@@ -39,7 +39,7 @@ mod-scalar = { module = "curse.maven:scalar-1012168", version.ref = "scalar" }
 mod-galacticraft-legacy = { module = "curse.maven:galacticraft-legacy-564236", version.ref = "galacticraft-legacy" }
 mod-asmodeuscore = { module = "curse.maven:asmodeuscore-303101", version.ref = "asmodeuscore" }
 mod-starmaker = { module = "curse.maven:starmaker-423541", version.ref = "starmaker" }
-mod-fanciest-block-particles = { module = "curse.maven:fanciest-block-particles-1653899", version.ref = "fanciest-block-particles" }
+mod-rtg = { module = "curse.maven:realistic-terrain-generation-plus-981628", version.ref = "rtg" }
 
 [plugins]
 blossom = { id = "net.kyori.blossom", version.ref = "blossom" }

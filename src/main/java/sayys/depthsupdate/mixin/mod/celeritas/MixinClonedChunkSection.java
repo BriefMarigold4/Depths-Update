@@ -15,7 +15,7 @@ public class MixinClonedChunkSection {
     @Inject(method = "getChunkSection", at = @At("HEAD"), cancellable = true)
     private static void depthsupdate$fixGetChunkSection(Chunk chunk, int y, CallbackInfoReturnable<ExtendedBlockStorage> cir) {
         var storageArray = chunk.getBlockStorageArray();
-        int storageIndex = HeightManager.getMaxContext().toStorageIndex(y << 4);
+        int storageIndex = HeightManager.get(chunk.getWorld()).toStorageIndex(y << 4);
 
         if (storageIndex >= 0 && storageIndex < storageArray.length) {
             cir.setReturnValue(storageArray[storageIndex]);

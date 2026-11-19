@@ -54,6 +54,14 @@ public class ModMixinConfigPlugin implements IMixinConfigPlugin {
             return Launch.classLoader.isClassExist("com.fbp.FBP");
         }
 
+        if (mixinClassName.contains(".mod.rtg.")) {
+            return Launch.classLoader.isClassExist("rtg.RTG");
+        }
+
+        if (mixinClassName.contains(".mod.impetus.")) {
+            return Launch.classLoader.isClassExist("rtg.com.bdmajora.impetus.ImpetusVintage");
+        }
+
         return true;
     }
 
