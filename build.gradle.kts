@@ -147,9 +147,9 @@ dependencies {
     "modCompileOnly"(libs.mod.galacticraft.legacy);
     "modCompileOnly"(libs.mod.asmodeuscore);
     "modCompileOnly"(libs.mod.starmaker);
+    "modCompileOnly"(libs.mod.rtg);
     "modRuntimeOnly"(libs.mod.fugue);
     "modRuntimeOnly"(libs.mod.scalar);
-    "modRuntimeOnly"(libs.mod.rtg);
 
     compileOnly(fileTree("libs") { include("*.jar") });
 }
