@@ -6,7 +6,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 import sayys.depthsupdate.DepthsUpdateConfig;
-import sayys.depthsupdate.Reference;
+import sayys.depthsupdate.DepthsUpdateMod;
 import sayys.depthsupdate.block.BlockAmethystCluster;
 import sayys.depthsupdate.block.BlockBuddingAmethyst;
 import sayys.depthsupdate.block.BlockDeepslateVariant;
@@ -20,7 +20,7 @@ public class AmethystRegistry {
     public static final Block amethyst_cluster = new BlockAmethystCluster("amethyst_cluster", 7.0F, 10.0F, 5);
 
     public static final Item amethyst_shard = new Item()
-        .setRegistryName(Reference.MOD_ID, "amethyst_shard")
+        .setRegistryName(DepthsUpdateMod.MOD_ID, "amethyst_shard")
         .setTranslationKey("amethyst_shard")
         .setCreativeTab(CreativeTabs.MATERIALS);
 

@@ -6,10 +6,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import sayys.depthsupdate.Reference;
+import sayys.depthsupdate.DepthsUpdateMod;
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Side.CLIENT)
+@Mod.EventBusSubscriber(modid = DepthsUpdateMod.MOD_ID, value = Side.CLIENT)
 public class RegistryHandlerClient {
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {

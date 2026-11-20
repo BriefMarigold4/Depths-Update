@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import sayys.depthsupdate.DepthsUpdateConfig;
-import sayys.depthsupdate.Reference;
+import sayys.depthsupdate.DepthsUpdateMod;
 
 public final class ModCreativeTab {
     private static final String[] ICON_CANDIDATES = {
@@ -22,7 +22,7 @@ public final class ModCreativeTab {
 
     public static void init() {
         if (instance == null && DepthsUpdateConfig.REGISTRY.useCustomCreativeTab) {
-            instance = new CreativeTabs(Reference.MOD_ID) {
+            instance = new CreativeTabs(DepthsUpdateMod.MOD_ID) {
                 @Override
                 @SideOnly(Side.CLIENT)
                 public ItemStack createIcon() {
@@ -39,7 +39,7 @@ public final class ModCreativeTab {
     @SideOnly(Side.CLIENT)
     private static ItemStack icon() {
         for (String candidate : ICON_CANDIDATES) {
-            ResourceLocation name = new ResourceLocation(Reference.MOD_ID, candidate);
+            ResourceLocation name = new ResourceLocation(DepthsUpdateMod.MOD_ID, candidate);
 
             if (Item.REGISTRY.containsKey(name)) {
                 return new ItemStack(Item.REGISTRY.getObject(name));

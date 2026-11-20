@@ -14,12 +14,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-import sayys.depthsupdate.Reference;
+import sayys.depthsupdate.DepthsUpdateMod;
 import sayys.depthsupdate.item.ItemSpyglass;
 
-@Mod.EventBusSubscriber(value = Side.CLIENT, modid = Reference.MOD_ID)
+@Mod.EventBusSubscriber(value = Side.CLIENT, modid = DepthsUpdateMod.MOD_ID)
 public class SpyglassClientHandler {
-    private static final ResourceLocation SCOPE_LOCATION = new ResourceLocation(Reference.MOD_ID, "textures/misc/spyglass_scope.png");
+    private static final ResourceLocation SCOPE_LOCATION = new ResourceLocation(DepthsUpdateMod.MOD_ID, "textures/misc/spyglass_scope.png");
     private static float fovModifier = 1.0F;
     private static float prevFovModifier = 1.0F;
 

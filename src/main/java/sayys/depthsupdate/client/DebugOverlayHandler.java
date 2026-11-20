@@ -15,11 +15,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-import sayys.depthsupdate.Reference;
+import sayys.depthsupdate.DepthsUpdateMod;
 import sayys.depthsupdate.core.HeightContext;
 import sayys.depthsupdate.core.HeightManager;
 
-@Mod.EventBusSubscriber(value = Side.CLIENT, modid = Reference.MOD_ID)
+@Mod.EventBusSubscriber(value = Side.CLIENT, modid = DepthsUpdateMod.MOD_ID)
 public final class DebugOverlayHandler {
     private static final String OUTSIDE = "Outside of world...";
 

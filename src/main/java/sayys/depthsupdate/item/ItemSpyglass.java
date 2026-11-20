@@ -17,17 +17,17 @@ import net.minecraft.item.IItemPropertyGetter;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import sayys.depthsupdate.Reference;
+import sayys.depthsupdate.DepthsUpdateMod;
 import sayys.depthsupdate.registry.StandaloneRegistry;
 
 public class ItemSpyglass extends Item {
     public ItemSpyglass() {
-        this.setRegistryName(Reference.MOD_ID, "spyglass");
+        this.setRegistryName(DepthsUpdateMod.MOD_ID, "spyglass");
         this.setTranslationKey("spyglass");
         this.setMaxStackSize(1);
         this.setCreativeTab(CreativeTabs.TOOLS);
 
-        this.addPropertyOverride(new ResourceLocation(Reference.MOD_ID, "in_hand"), new IItemPropertyGetter() {
+        this.addPropertyOverride(new ResourceLocation(DepthsUpdateMod.MOD_ID, "in_hand"), new IItemPropertyGetter() {
             @Override
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) {

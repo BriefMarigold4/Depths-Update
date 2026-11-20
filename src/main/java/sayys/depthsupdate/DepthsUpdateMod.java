@@ -21,16 +21,19 @@ import sayys.depthsupdate.world.generation.DripstoneCavesGenerator;
 import sayys.depthsupdate.world.generation.LushCavesGenerator;
 
 @Mod(
-    modid = Reference.MOD_ID,
-    name = Reference.MOD_NAME,
-    version = Reference.VERSION,
+    modid = DepthsUpdateMod.MOD_ID,
+    name = DepthsUpdateMod.MOD_NAME,
+    version = DepthsUpdateMod.VERSION,
     dependencies = "after:" + FluidloggedCompat.MOD_ID
 )
 public class DepthsUpdateMod {
-    public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_NAME);
+    public static final Logger LOGGER = LogManager.getLogger(DepthsUpdateMod.MOD_NAME);
+    public static final String MOD_ID = "depthsupdate";
+    public static final String MOD_NAME = "Depths Update Lite";
+    public static final String VERSION = "0.1.13";
 
     @SidedProxy(
-        modId = Reference.MOD_ID,
+        modId = DepthsUpdateMod.MOD_ID,
         clientSide = "sayys.depthsupdate.proxy.ClientProxy",
         serverSide = "sayys.depthsupdate.proxy.CommonProxy"
     )

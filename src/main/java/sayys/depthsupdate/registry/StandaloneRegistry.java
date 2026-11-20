@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import sayys.depthsupdate.DepthsUpdateConfig;
-import sayys.depthsupdate.Reference;
+import sayys.depthsupdate.DepthsUpdateMod;
 import sayys.depthsupdate.item.ItemSpyglass;
 
 public class StandaloneRegistry {
@@ -21,17 +21,17 @@ public class StandaloneRegistry {
         () -> DepthsUpdateConfig.REGISTRY.enableSpyglass
     ).add(spyglass, spyglass_use, spyglass_stop)
     .withModelOverrides(event -> {
-        ModelBakery.registerItemVariants(spyglass, spyglass.getRegistryName(), new ResourceLocation(Reference.MOD_ID, "item/spyglass_3d"));
+        ModelBakery.registerItemVariants(spyglass, spyglass.getRegistryName(), new ResourceLocation(DepthsUpdateMod.MOD_ID, "item/spyglass_3d"));
     })
     .withInit(() -> {
-        GameRegistry.addShapedRecipe(new ResourceLocation(Reference.MOD_ID, "spyglass"), null, new ItemStack(spyglass),
+        GameRegistry.addShapedRecipe(new ResourceLocation(DepthsUpdateMod.MOD_ID, "spyglass"), null, new ItemStack(spyglass),
             " A ", " I ", " I ",
             'A', AmethystRegistry.amethyst_shard,
             'I', DeepslateRegistry.copper_ingot);
     });
 
     private static SoundEvent createSoundEvent(String name) {
-        ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);
+        ResourceLocation location = new ResourceLocation(DepthsUpdateMod.MOD_ID, name);
         SoundEvent event = new SoundEvent(location);
 
         event.setRegistryName(location);

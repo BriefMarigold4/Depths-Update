@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 import sayys.depthsupdate.DepthsUpdateConfig;
-import sayys.depthsupdate.Reference;
+import sayys.depthsupdate.DepthsUpdateMod;
 import sayys.depthsupdate.block.BlockCobbledDeepslate;
 import sayys.depthsupdate.block.BlockCopperOre;
 import sayys.depthsupdate.block.BlockDeepslate;
@@ -72,10 +72,10 @@ public class DeepslateRegistry {
     public static final Block raw_copper_block = new BlockDeepslateVariant("raw_copper_block", 5.0F, 6.0F, SoundType.STONE);
 
     // Smelting Results
-    public static final Item raw_iron = new Item().setRegistryName(Reference.MOD_ID, "raw_iron").setTranslationKey("raw_iron").setCreativeTab(CreativeTabs.MATERIALS);
-    public static final Item raw_gold = new Item().setRegistryName(Reference.MOD_ID, "raw_gold").setTranslationKey("raw_gold").setCreativeTab(CreativeTabs.MATERIALS);
-    public static final Item raw_copper = new Item().setRegistryName(Reference.MOD_ID, "raw_copper").setTranslationKey("raw_copper").setCreativeTab(CreativeTabs.MATERIALS);
-    public static final Item copper_ingot = new Item().setRegistryName(Reference.MOD_ID, "copper_ingot").setTranslationKey("copper_ingot").setCreativeTab(CreativeTabs.MATERIALS);
+    public static final Item raw_iron = new Item().setRegistryName(DepthsUpdateMod.MOD_ID, "raw_iron").setTranslationKey("raw_iron").setCreativeTab(CreativeTabs.MATERIALS);
+    public static final Item raw_gold = new Item().setRegistryName(DepthsUpdateMod.MOD_ID, "raw_gold").setTranslationKey("raw_gold").setCreativeTab(CreativeTabs.MATERIALS);
+    public static final Item raw_copper = new Item().setRegistryName(DepthsUpdateMod.MOD_ID, "raw_copper").setTranslationKey("raw_copper").setCreativeTab(CreativeTabs.MATERIALS);
+    public static final Item copper_ingot = new Item().setRegistryName(DepthsUpdateMod.MOD_ID, "copper_ingot").setTranslationKey("copper_ingot").setCreativeTab(CreativeTabs.MATERIALS);
 
     public static final RegistrationFeature DEEPSLATE_FAMILY = new RegistrationFeature(() -> DepthsUpdateConfig.REGISTRY.enableDeepslateFamily)
         .add(deepslate, cobbled_deepslate, infested_deepslate, polished_deepslate, chiseled_deepslate, deepslate_bricks, deepslate_tiles, cracked_deepslate_bricks, cracked_deepslate_tiles,
@@ -99,7 +99,7 @@ public class DeepslateRegistry {
             registerCustomBlockModel(deepslate_tile_wall, "inventory");
 
             for (BlockModSlab.Variant variant : BlockModSlab.Variant.values()) {
-                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(deepslate_slab_half), variant.getMetadata(), new ModelResourceLocation(Reference.MOD_ID + ":deepslate_slab_" + variant.getName(), "inventory"));
+                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(deepslate_slab_half), variant.getMetadata(), new ModelResourceLocation(DepthsUpdateMod.MOD_ID + ":deepslate_slab_" + variant.getName(), "inventory"));
             }
         })
         .withInit(() -> {

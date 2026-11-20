@@ -19,10 +19,10 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import sayys.depthsupdate.Reference;
+import sayys.depthsupdate.DepthsUpdateMod;
 import sayys.depthsupdate.mixin.IMixinBlock;
 
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
+@Mod.EventBusSubscriber(modid = DepthsUpdateMod.MOD_ID)
 public class RegistryHandler {
     private static final List<RegistrationFeature> FEATURES = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class RegistryHandler {
         for (Block block : registry) {
             ResourceLocation name = block.getRegistryName();
 
-            if (name == null || !Reference.MOD_ID.equals(name.getNamespace())) {
+            if (name == null || !DepthsUpdateMod.MOD_ID.equals(name.getNamespace())) {
                 continue;
             }
 
@@ -55,7 +55,7 @@ public class RegistryHandler {
         for (net.minecraftforge.registries.IForgeRegistryEntry<?> entry : entries) {
             ResourceLocation name = entry.getRegistryName();
 
-            if (name == null || !Reference.MOD_ID.equals(name.getNamespace())) {
+            if (name == null || !DepthsUpdateMod.MOD_ID.equals(name.getNamespace())) {
                 continue;
             }
 

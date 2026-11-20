@@ -10,16 +10,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import sayys.depthsupdate.core.HeightManager;
 import sayys.depthsupdate.util.BlockUtils;
 
-@Config(modid = Reference.MOD_ID)
+@Config(modid = DepthsUpdateMod.MOD_ID)
 public class DepthsUpdateConfig {
-    @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
+    @Mod.EventBusSubscriber(modid = DepthsUpdateMod.MOD_ID)
     private static class EventHandler {
         @SubscribeEvent
         public static void onConfigChanged(
             final ConfigChangedEvent.OnConfigChangedEvent event
         ) {
-            if (event.getModID().equals(Reference.MOD_ID)) {
-                ConfigManager.sync(Reference.MOD_ID, Config.Type.INSTANCE);
+            if (event.getModID().equals(DepthsUpdateMod.MOD_ID)) {
+                ConfigManager.sync(DepthsUpdateMod.MOD_ID, Config.Type.INSTANCE);
 
                 BlockUtils.clearCaches();
                 HeightManager.initialize();
