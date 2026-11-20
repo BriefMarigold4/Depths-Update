@@ -20,7 +20,8 @@
     "fbp.MixinLightUtil"
   ],
   "mixins": [
-    "rltweaker.MixinRLTweakerHookWorld"
+    "rltweaker.MixinRLTweakerHookWorld",
+    "rtg.MixinChunkGeneratorRTG"
   ],
   "server": [],
   "setSourceFile": true,

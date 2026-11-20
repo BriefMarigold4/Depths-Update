@@ -106,6 +106,15 @@ public abstract class MixinChunk {
     @Unique
     private static final ExtendedBlockStorage NULL_BLOCK_STORAGE = null;
 
+    @Unique
+    private HeightContext depthsupdate$heightCtx = HeightContext.VANILLA;
+
+    @Unique
+    private boolean depthsupdate$extended;
+
+    @Unique
+    private boolean depthsupdate$debugWorld;
+
     /**
      * ThreadLocal to pass HeightContext into @ModifyConstant during construction.
      */
@@ -124,12 +133,12 @@ public abstract class MixinChunk {
 
     @Unique
     private HeightContext depthsupdate$ctx() {
-        return HeightManager.get(this.world);
+        return this.depthsupdate$heightCtx;
     }
 
     @Unique
     private boolean depthsupdate$isExtended() {
-        return HeightManager.isExtended(this.world);
+        return this.depthsupdate$extended;
     }
 
     @Inject(method = "<init>(Lnet/minecraft/world/World;II)V", at = @At("HEAD"))
@@ -147,6 +156,9 @@ public abstract class MixinChunk {
     private void depthsupdate$onChunkInitDefault(World worldIn, int x, int z, CallbackInfo ci) {
         depthsupdate$initContext.remove();
         HeightContext ctx = HeightManager.get(worldIn);
+        this.depthsupdate$heightCtx = HeightManager.get(worldIn);
+        this.depthsupdate$extended  = HeightManager.isExtended(worldIn);
+        this.depthsupdate$debugWorld = worldIn.getWorldType() == WorldType.DEBUG_ALL_BLOCK_STATES;
         if (ctx.isExtended()) {
             for (int i = 0; i < this.heightMap.length; ++i) {
                 this.heightMap[i] = ctx.minY();
@@ -238,7 +250,7 @@ public abstract class MixinChunk {
 
         HeightContext ctx = depthsupdate$ctx();
 
-        if (this.world.getWorldType() == WorldType.DEBUG_ALL_BLOCK_STATES) {
+        if (this.depthsupdate$debugWorld) {
             IBlockState iblockstate = null;
 
             if (y == 60) {

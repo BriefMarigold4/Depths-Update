@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import rtg.world.gen.ChunkGeneratorRTG;
 
 import sayys.depthsupdate.DepthsUpdateConfig;
 import sayys.depthsupdate.core.BedrockFilter;
@@ -63,14 +64,15 @@ public class MixinChunkProviderServer {
     )
     private Chunk depthsupdate$onGenerateChunk(IChunkGenerator generator, int x, int z) {
         boolean vanillaOverworld = generator.getClass() == ChunkGeneratorOverworld.class;
+        boolean RTGOverworld = generator.getClass() == ChunkGeneratorRTG.class;
         boolean flatOrDebug = generator instanceof ChunkGeneratorFlat || generator instanceof ChunkGeneratorDebug;
         boolean deepWorld = !flatOrDebug
                 && HeightManager.isExtended(this.world)
                 && HeightManager.get(this.world).minY() < 0;
-        boolean fillCustom = deepWorld && !vanillaOverworld
+        boolean fillCustom = deepWorld && !vanillaOverworld && !RTGOverworld
                 && DepthsUpdateConfig.heightExtension.extendCustomWorldTypes;
 
-        boolean filterBedrock = deepWorld && (vanillaOverworld || fillCustom);
+        boolean filterBedrock = deepWorld && (vanillaOverworld || RTGOverworld || fillCustom);
 
         Chunk chunk;
 

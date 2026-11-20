@@ -4,6 +4,7 @@ import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.world.chunk.Chunk;
 import org.embeddedt.embeddium.impl.gl.device.CommandList;
 import org.embeddedt.embeddium.impl.render.chunk.vertex.format.ChunkVertexType;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,7 +19,7 @@ import sayys.depthsupdate.core.HeightManager;
 
 @Mixin(value = VintageRenderSectionManager.class, remap = false)
 public class MixinVintageRenderSectionManager {
-    @Shadow
+    @Shadow @Final
     private WorldClient world;
 
     /**

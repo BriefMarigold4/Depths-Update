@@ -9,6 +9,7 @@
   "target": "@env(DEFAULT)",
   "client": [
     "client.MixinViewFrustum",
+    "client.MixinEntityRenderer",
     "client.MixinRenderGlobal",
     "client.MixinRenderGlobalChunkOffset",
     "client.MixinNetHandlerPlayClient",
