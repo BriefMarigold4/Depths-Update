@@ -20,7 +20,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import rtg.world.gen.ChunkGeneratorRTG;
 
 import sayys.depthsupdate.DepthsUpdateConfig;
 import sayys.depthsupdate.core.BedrockFilter;
@@ -64,7 +63,7 @@ public class MixinChunkProviderServer {
     )
     private Chunk depthsupdate$onGenerateChunk(IChunkGenerator generator, int x, int z) {
         boolean vanillaOverworld = generator.getClass() == ChunkGeneratorOverworld.class;
-        boolean RTGOverworld = generator.getClass() == ChunkGeneratorRTG.class;
+        boolean RTGOverworld = depthsupdate$isRTG(generator);
         boolean flatOrDebug = generator instanceof ChunkGeneratorFlat || generator instanceof ChunkGeneratorDebug;
         boolean deepWorld = !flatOrDebug
                 && HeightManager.isExtended(this.world)
@@ -187,5 +186,10 @@ public class MixinChunkProviderServer {
         chunk.generateSkylightMap();
 
         return chunk;
+    }
+
+    @Unique
+    private static boolean depthsupdate$isRTG(Object generator) {
+        return generator.getClass().getName().equals("rtg.world.gen.ChunkGeneratorRTG");
     }
 }

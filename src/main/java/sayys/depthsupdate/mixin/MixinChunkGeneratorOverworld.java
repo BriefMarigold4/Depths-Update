@@ -45,7 +45,8 @@ public abstract class MixinChunkGeneratorOverworld {
             return;
         }
 
-        if (!HeightManager.isExtended(this.world) || HeightManager.get(this.world).minY() >= 0) {
+        final boolean isNotExtended = !HeightManager.isExtended(this.world) || HeightManager.get(this.world).minY() >= 0;
+        if (isNotExtended) {
             return;
         }
 
